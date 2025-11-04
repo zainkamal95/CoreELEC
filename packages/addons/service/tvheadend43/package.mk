@@ -71,7 +71,6 @@ pre_configure_target() {
                              --disable-dbus_1 \
                              --enable-dvbcsa \
                              --disable-dvben50221 \
-                             --disable-dvbscan \
                              --enable-hdhomerun_client \
                              --disable-hdhomerun_static \
                              --enable-epoll \
@@ -128,9 +127,3 @@ addon() {
     cp -P $(get_install_dir x265)/usr/lib/libx265.so.212 ${ADDON_BUILD}/${PKG_ADDON_ID}/lib.private
     patchelf --add-rpath '${ORIGIN}/../lib.private' ${ADDON_BUILD}/${PKG_ADDON_ID}/bin/{comskip,tvheadend}
   fi
-
-  # dvb-scan files
-  mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
-  cp -r $(get_install_dir dtv-scan-tables)/usr/share/dvbv5/* \
-        ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
-}
