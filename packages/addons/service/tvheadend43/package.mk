@@ -10,8 +10,8 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
 PKG_URL="https://github.com/tvheadend/tvheadend/archive/${PKG_VERSION}.tar.gz"
-PKG_DEPENDS_TARGET="toolchain argtable2 avahi comskip curl dvb-apps ffmpegx libdvbcsa libhdhomerun \
-                    libiconv openssl pcre2 pngquant:host Python3:host dtv-scan-tables"
+PKG_DEPENDS_TARGET="toolchain argtable2 avahi comskip curl ffmpegx libdvbcsa libhdhomerun \
+                    libiconv openssl pcre2 pngquant:host Python3:host"
 PKG_DEPENDS_CONFIG="ffmpegx"
 PKG_SECTION="service"
 PKG_SHORTDESC="Tvheadend: a TV streaming server for Linux"
@@ -131,5 +131,6 @@ addon() {
 
   # dvb-scan files
   mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
-
+  cp -r $(get_install_dir dtv-scan-tables)/usr/share/dvbv5/* \
+        ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
 }
