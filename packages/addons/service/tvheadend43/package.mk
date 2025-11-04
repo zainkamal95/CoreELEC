@@ -131,6 +131,4 @@ addon() {
 
   # dvb-scan files
   mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
-  cp -r $(get_install_dir dtv-scan-tables)/usr/share/dvbv5/* \
-        ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
 }
