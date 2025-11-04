@@ -129,4 +129,7 @@ addon() {
     patchelf --add-rpath '${ORIGIN}/../lib.private' ${ADDON_BUILD}/${PKG_ADDON_ID}/bin/{comskip,tvheadend}
   fi
 
+  # dvb-scan files
+  mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
+
 }
