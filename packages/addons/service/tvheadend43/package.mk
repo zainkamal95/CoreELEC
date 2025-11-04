@@ -9,7 +9,7 @@ PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.tvheadend.org"
-PKG_URL="https://github.com/tvheadend/tvheadend/archive/${PKG_VERSION}.tar.gz"
+PKG_URL="https://github.com/zainkamal95/tvheadend/archive/${PKG_VERSION}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain argtable2 avahi comskip curl dvb-apps ffmpegx libdvbcsa libhdhomerun \
                     libiconv openssl pcre2 pngquant:host Python3:host dtv-scan-tables"
 PKG_DEPENDS_CONFIG="ffmpegx"
@@ -128,4 +128,9 @@ addon() {
     cp -P $(get_install_dir x265)/usr/lib/libx265.so.212 ${ADDON_BUILD}/${PKG_ADDON_ID}/lib.private
     patchelf --add-rpath '${ORIGIN}/../lib.private' ${ADDON_BUILD}/${PKG_ADDON_ID}/bin/{comskip,tvheadend}
   fi
+
+  # dvb-scan files
+  mkdir -p ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
+  cp -r $(get_install_dir dtv-scan-tables)/usr/share/dvbv5/* \
+        ${ADDON_BUILD}/${PKG_ADDON_ID}/dvb-scan
 }
